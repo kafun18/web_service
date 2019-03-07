@@ -22,11 +22,11 @@ public class ServiceClient {
 
 	public static void main(String[] args) throws IOException {
 		//创建WSDL的URL，注意不是服务地址
-		URL url = new URL("http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx?wsdl");
+		URL url = new URL("http://ws.webxml.com.cn/WebServices/MobileCodeWS.asmx?wsdl");
 		
 		//创建服务名称
-		//1.namespaceURI - 命名空间地址
-		//2.localPart - 服务视图名
+		//1.namespaceURI - 命名空间地址  <targetNamespace>
+		//2.localPart - 服务视图名 <service name=>
 		QName qname = new QName("http://WebXml.com.cn/", "MobileCodeWS");
 		
 		//创建服务视图
@@ -37,7 +37,7 @@ public class ServiceClient {
 		//获取服务实现类
 		MobileCodeWSSoap mobileCodeWSSoap = service.getPort(MobileCodeWSSoap.class);
 		//调用查询方法
-		String result = mobileCodeWSSoap.getMobileCodeInfo("1866666666", "");
+		String result = mobileCodeWSSoap.getMobileCodeInfo("15626215507", "");
 		System.out.println(result);
 	}
 }

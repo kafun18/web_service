@@ -22,7 +22,7 @@ public class HttpClient {
 
 	public static void main(String[] args) throws IOException {
 		//第一步：创建服务地址，不是WSDL地址
-		URL url = new URL("http://webservice.webxml.com.cn/WebServices/MobileCodeWS.asmx");
+		URL url = new URL("http://ws.webxml.com.cn/WebServices/MobileCodeWS.asmx");
 		//第二步：打开一个通向服务地址的连接
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		//第三步：设置参数
@@ -31,11 +31,11 @@ public class HttpClient {
 		//3.2设置数据格式：content-type
 		connection.setRequestProperty("content-type", "text/xml;charset=utf-8");
 		//3.3设置输入输出，因为默认新创建的connection没有读写权限，
-//		connection.setDoInput(true);
-//		connection.setDoOutput(true);
+		connection.setDoInput(true);
+		connection.setDoOutput(true);
 
 		//第四步：组织SOAP数据，发送请求
-		String soapXML = getXML("15226466316");
+		String soapXML = getXML("15626215507");
 		OutputStream os = connection.getOutputStream();
 		os.write(soapXML.getBytes());
 		//第五步：接收服务端响应，打印
